@@ -15,6 +15,18 @@
     --text-shadow: #FFFFFF;
 }
 
+    .theme-light .card__like-button {
+        color: var(--background-color, #FFFFFF);
+    }
+
+    .theme-light .save__button {
+        color: var(--background-color, #FFFFFF);
+    }
+
+    .theme-light .save__icon-dialog {
+        color: var(--accent-color, #000000);
+    }
+
 :root.theme-dark {
     --main-text-weight: 465;
     --headers-text-weight: 785;
@@ -26,6 +38,18 @@
     --text-shadow: #000000;
 }
 
+    .theme-dark .card__like-button {
+        color: var(--accent-color, #00CC14);
+    }
+    
+    .theme-dark .save__button {
+        color: var(--accent-color, #00CC14);
+    }
+
+    .theme-dark .save__icon-dialog {
+        color: var(--accent-color, #00CC14);
+    }
+
 @media (prefers-color-scheme: dark) {
     :root {
       --main-text-weight: 465;
@@ -36,5 +60,42 @@
       --second-gradient-color-1: #007f0c;
       --second-gradient-color-2: #004306;
       --text-shadow: #000000;
+    }
+
+    .card__like-button {
+        color: var(--accent-color, #00CC14);
+    }
+    
+    .save__button {
+        color: var(--accent-color, #00CC14);
+    }
+
+    .save__icon-dialog {
+        color: var(--accent-color, #00CC14);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+    --main-text-weight: 400;
+    --headers-text-weight: 700;
+    --background-color: #FFFFFF;
+    --accent-color: #000000;
+    --first-gradient-color: #d3d3d3;
+    --second-gradient-color-1: #e7e7e7;
+    --second-gradient-color-2: #1a1a1a;
+    --text-shadow: #FFFFFF;
+    }
+
+    .card__like-button {
+        color: var(--background-color, #FFFFFF);
+    }
+    
+    .save__button {
+        color: var(--background-color, #FFFFFF);
+    }
+
+    .save__icon-dialog {
+        color: var(--accent-color, #000000);
     }
 }

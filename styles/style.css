@@ -34,7 +34,7 @@
   align-items: center;
   text-transform: uppercase;
   font-family: var(--accent-font, 'PressStart2P', sans-serif);
-  max-width: clamp(150px, 100%, var(--max-content-width, 700px));
+  max-width: clamp(375px, 80%, var(--max-content-width, 700px));
   background-color: var(--background-color, #FFFFFF);
   border: 2px solid var(--accent-color, #000000);
 }
@@ -56,7 +56,12 @@
 .theme-menu__list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 7px;
+}
+
+.theme-menu__item {
+  align-self: flex-start;
+  padding-left: 16px;
 }
 
 .theme-menu__button {
@@ -105,24 +110,29 @@
 }
 
 .main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
   margin: 0 auto;
   max-width: clamp(375px, 80%, var(--max-content-width, 700px));
-  background-color: var(--background-color, #FFFFFF);
 }
 
 .article-decor {
+  background-color: var(--background-color, #FFFFFF);
   border: 2px solid var(--accent-color, #000000);
 }
 
 .article-header {
+  border-bottom: 2px solid var(--accent-color, #000000);
   font-variation-settings: 'wght' var(--headers-text-weight, 700);
   font-size: 18px;
-  padding: 3px 24px 3px 10px;
+  padding: 4px 24px 4px 10px;
 }
 
 .figure {
   margin: 0;
   position: relative;
+  overflow: hidden;
 }
 
 .figure > img {
@@ -130,8 +140,40 @@
 }
 
 .image {
-  border-top: 2px solid var(--accent-color, #000000);
-  border-bottom: 2px solid var(--accent-color, #000000);
+  aspect-ratio: 1;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  max-height: 696px;
+}
+
+.image__article-unknown {
+  filter: blur(7px);
+}
+
+.image__article-whatif {
+  filter: brightness(200%);
+}
+
+.image__article-whant {
+  filter: contrast(200%);
+}
+
+.image__article-notalone {
+  filter: saturate(110%);
+}
+
+.image__article-change {
+  filter: sepia(100%);
+}
+
+.image__article-concentrate {
+  filter: invert(0.4);
+}
+
+.image__article-domore {
+  filter: sepia(60%) brightness(200%);
 }
 
 .figcaption {
@@ -150,11 +192,13 @@
 }
 
 .article-text {
-  margin: 25px;
+  border-top: 2px solid var(--accent-color, #000000);
+  padding: 25px;
   display: flex;
   flex-direction: column;
   gap: 27px;
   font-size: 18px;
+  width: 100%;
 }
 
 .article-buttons {
@@ -164,6 +208,78 @@
   padding-block-end: 25px;
   padding-inline-end: 25px;
 
+}
+
+.article-buttons .card__icon-button {
+  border: 2px solid transparent;
+  height: 38px;
+  aspect-ratio: 1;
+  padding: 0;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color, #000000);
+}
+
+.like-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.like-icon .core {
+  transition: fill 0.3s 0.03s linear;
+}
+
+.like-icon .main-body {
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .core {
+  fill: var(--accent-color, #000000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--accent-color, #000000);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon:active .core {
+  fill: var(--main-body-color, #FF0000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--main-body-color, #FF0000);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--main-body-color, #FF0000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--main-body-color, #FF0000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--main-body-color, #FF0000);
+  transition: fill 0.3s 0.06s linear;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart-scale 0.3s 0.1s ease-in alternate 2;
+  transform-origin: center;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-opacity 0.3s 0.3s ease-in alternate 2;
+}
+
+.sparks {
+  opacity: 0;
 }
 
 .card__button, .save__button {
@@ -177,13 +293,16 @@
 
 .card__like-button {
   border: 2px solid var(--accent-color, #000000);
-  padding: 9.5px 37px 11.5px;
+  padding: 9.5px 0 11.5px;
+  text-align: center;
+  color: var(--background-color, #FFFFFF);
   width: 130px;
-  height: 39px;
+  height: 38px;
 }
 
 .save__button {
   display: flex;
+  color: var(--background-color, #FFFFFF);
   gap: 8px;
   align-items: center;
   background: var(--background-color, #FFFFFF);
@@ -217,11 +336,12 @@
   width: 21px;
   height: 21px;
   mix-blend-mode: difference;
+  z-index: 10;
 }
 
 .button__text {
   font-family: var(--accent-font, 'PressStart2P', sans-serif);
-  color: var(--background-color, #FFFFFF);
+  color: currentColor;
   font-size: 14px;
   position: relative;
   z-index: 10;
@@ -235,6 +355,57 @@
     margin-block-end: 103px;
 }
 
+.footer__dialog-id {
+  width: 357px;
+  background-color: var(--background-color, #FFFFFF);
+  border: 2px solid var(--accent-color, #000000);
+  padding: 30px;
+}
+
+.save__icon-dialog {
+  height: 39px;
+  width: 39px;
+  grid-area: icon;
+  align-self: center;
+}
+
+.footer__dialog-id .title__dialog-id {
+  color: var(--accent-color, #000000);
+  font-family: var(--accent-font, sans-serif);
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  font-weight: 400;
+  grid-area: text;
+}
+
+.button__dialog-id {
+  margin-top: 10px;
+  grid-area: button;
+  text-transform: uppercase;
+  width: 100%;
+  padding-top: 12.5px;
+  padding-bottom: 12.5px;
+}
+
+.button__text__dialog-id {
+  width: 100%;
+}
+
+.footer__dialog-id::backdrop {
+  backdrop-filter: brightness(40%);
+}
+
+.footer__dialog-id[open] {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-areas:
+    "icon text"
+    "button button";
+  gap: 20px;
+}
+
+
 @media (width <= 375px) {
   .header {
     max-width: 100%;
@@ -246,13 +417,26 @@
 
   .save__button {
     flex-direction: column;
-    padding: 15px 19px;
+    padding: 10px 19px;
   }
 
   .save__icon {
     width: 28px;
     height: 28px;
   }
+
+  .save__icon-dialog {
+    height: 40px;
+    width: 40px;
+  }
+
+  .footer__dialog-id {
+    padding: 30px 41px;
+  }
+
+  .footer__dialog-id[open] {
+    gap: 18px;
+}
 }
 
 @supports((text-stroke: 1px var(--text-shadow, #FFFFFF)) or (-webkit-text-stroke: 1px var(--text-shadow, #FFFFFF))) {
@@ -268,6 +452,24 @@
     left: -12px;
   }
   100% {
-    left: -8px;;
+    left: -8px;
   }
-} 
+}
+
+@keyframes heart-scale {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.5);
+  }
+}
+
+@keyframes sparks-opacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }  
+  }
