@@ -40,6 +40,19 @@
     }  
 }
 
+.like-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.sparks {
+    opacity: 0;
+}
+  
+.like-icon .heart {
+    transform-origin: center;
+}
+  
 .like-icon .core {
   transition: fill 0.3s 0.03s linear;
 }

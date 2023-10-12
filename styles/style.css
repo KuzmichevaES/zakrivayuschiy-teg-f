@@ -25,7 +25,7 @@
     repeating-linear-gradient(to bottom, var(--first-gradient-color, #d3d3d3) 0px 2px, transparent 2px 4px),
     linear-gradient(to bottom, var(--second-gradient-color-1, #e7e7e7) 0.01%, var(--second-gradient-color-2, #1a1a1a));
   background-size: cover;
-  background-attachment: scroll;
+  background-attachment: fixed;
 }
 
 .header {
@@ -183,7 +183,7 @@
   top: 25px;
   right: 25px;
   mix-blend-mode: hard-light;
-  text-shadow: 1px 1px 1px var(--text-shadow, #FFFFFF);
+  text-shadow: 0 0 1px var(--text-shadow, #FFFFFF);
 }
 
 @supports((text-stroke: 1px var(--text-shadow, #FFFFFF)) or (-webkit-text-stroke: 1px var(--text-shadow, #FFFFFF))) {
@@ -229,19 +229,6 @@
   transition: 0.3s ease;
 }
 
-.like-icon {
-  width: 36px;
-  height: 36px;
-}
-
-.like-icon .heart {
-  transform-origin: center;
-}
-
-.sparks {
-  opacity: 0;
-}
-
 .card__button, .save__button {
   position: relative;
   outline: none;
@@ -253,11 +240,11 @@
 
 .card__like-button {
   border: 2px solid var(--accent-color, #000000);
-  padding: 9.5px 25px 11.5px;
+  padding: 8.5px 25px 6.5px;
   text-align: center;
   color: var(--button-text-color, #FFFFFF);
   width: 130px;
-  max-height: 38px;
+  min-height: 38px;
 }
 
 .save__button {
@@ -319,6 +306,7 @@
 }
 
 .save__dialog-id {
+  color: var(--button-text-color, #FFFFFF);
   width: 357px;
   background-color: var(--background-color, #FFFFFF);
   border: 2px solid var(--accent-color, #000000);
@@ -330,6 +318,7 @@
   width: 39px;
   grid-area: icon;
   align-self: center;
+  mix-blend-mode: difference;
 }
 
 .save_section-form {
@@ -393,7 +382,4 @@
     padding: 30px 38px;
   }
 
-  .save__dialog-id[open] {
-    gap: 20px;
-}
 }

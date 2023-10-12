@@ -12,7 +12,7 @@
     --content-width: clamp(375px, calc(23.4375rem + ((1vw - 3.75px) * 30.5164)), 700px);
     --text-shadow: #FFFFFF;
     --main-body-color: #FF0000;
-    --button-text-color: #FFFFFF;
+    --button-text-color: var(----background-color, #FFFFFF);
 }
 
 @media (width <= 375px) {
